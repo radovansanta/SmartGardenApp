@@ -36,6 +36,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(valves.get(position).getName());
+        holder.description.setText(valves.get(position).getDescription());
         holder.icon.setImageResource(valves.get(position).getIconId());
     }
 

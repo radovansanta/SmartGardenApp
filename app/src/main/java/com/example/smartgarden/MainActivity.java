@@ -26,13 +26,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Valve> valves = new ArrayList<>();
 
         valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
+        valves.add(new Valve("Trees","Fruit trees in garden. Apples, pears, apricots and plums",R.drawable.tree_icon));
+        valves.add(new Valve("Flowers","Valve for flowers on balcony",R.drawable.flower_icon));
+        valves.add(new Valve("Bushes","All bushes in the garden and in front of the house",R.drawable.bush_icon));
 
         valveAdapter = new ValveAdapter(valves);
 
