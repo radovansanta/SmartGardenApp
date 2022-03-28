@@ -15,27 +15,16 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5">
+            android:layout_weight="1">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="15dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
-                    android:text="Let's choose something from your garden that you would like to water"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="#B3D1D2" />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/robot"/>
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="18dp"
+                android:text="You can see all available valves in your garden. You can easily which one would you like to close or open."
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="#FFFFFF" />
         </FrameLayout>
 
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:padding="10dp"
+            android:padding="15dp"
             android:background="@drawable/rounded_shape">
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
