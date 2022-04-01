@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#036769">
     tools:context=".MainActivity2">
 
     <LinearLayout
@@ -21,20 +20,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:background="@drawable/top_background"
                 android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp">
+
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/white"
+                    android:text="Let’s see and manage"
+                    android:textAppearance="?attr/textAppearanceBody1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Let's choose something from your garden that you would like to water"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="#B3D1D2" />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/robot"/>
+                    android:text="VALVES IN GARDEN"
+                    android:textColor="@color/white"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            </LinearLayout>
             </LinearLayout>
         </FrameLayout>
 
@@ -44,7 +55,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:padding="10dp"
-            android:background="@drawable/rounded_shape">
+            android:background="#E9ECEE">
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
