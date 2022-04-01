@@ -5,7 +5,7 @@ public class Valve {
     private String description;
     private int iconId;
 
-    Valve(String name, String description, int iconId){
+    public Valve(String name, String description, int iconId){
         this.name = name;
         this.description = description;
         this.iconId = iconId;

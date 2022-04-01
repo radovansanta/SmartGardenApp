@@ -16,7 +16,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
     private ArrayList<Valve> valves;
     private OnClickListener onClickListener;
 
-    ValveAdapter(ArrayList<Valve> valves) {
+    public ValveAdapter(ArrayList<Valve> valves) {
         this.valves = valves;
     }
 
