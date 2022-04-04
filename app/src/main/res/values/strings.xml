@@ -9,6 +9,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Valves</string>
-    <string name="menu_gallery">Schedule</string>
+    <string name="menu_gallery">Switch Log</string>
     <string name="menu_slideshow">Weather</string>
 </resources>
