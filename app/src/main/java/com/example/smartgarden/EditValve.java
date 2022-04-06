@@ -1,5 +1,6 @@
 package com.example.smartgarden;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -11,12 +12,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.smartgarden.ui.home.HomeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class EditValve extends Fragment {
 
-    private EditValveViewModel mViewModel;
+    private HomeViewModel mViewModel;
 
     public static EditValve newInstance() {
         return new EditValve();
@@ -26,19 +29,21 @@ public class EditValve extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.valve_edit, container, false);
-        TextInputEditText nameTextInput = view.findViewById(R.id.name_textview);
-
+        mViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
 
         return inflater.inflate(R.layout.valve_edit, container, false);
+
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditValveViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        TextInputEditText nameText = view.findViewById(R.id.name_textview);
+
+        mViewModel.getSelected().observe(getViewLifecycleOwner(), users -> {
+            nameText.setText(users);
+        });
+
     }
 
 }

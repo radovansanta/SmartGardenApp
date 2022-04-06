@@ -25,6 +25,6 @@
     <fragment
         android:id="@+id/editValve"
         android:name="com.example.smartgarden.EditValve"
-        android:label="valve_edit"
+        android:label="Edit valve"
         tools:layout="@layout/valve_edit" />
 </navigation>
