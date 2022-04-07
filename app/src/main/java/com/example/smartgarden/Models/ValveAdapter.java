@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.smartgarden.Networking.Repositories.ValveRepository;
 import com.example.smartgarden.R;
 
 import java.util.ArrayList;
@@ -17,9 +21,11 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
 
     private ArrayList<Valve> valves;
     private OnClickListener onClickListener;
+    ValveRepository repository;
 
     public ValveAdapter(ArrayList<Valve> valves) {
         this.valves = valves;
+        repository = ValveRepository.getInstance();
     }
 
     public void setOnClickListener(OnClickListener listener) {
@@ -40,6 +46,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
         holder.name.setText(valves.get(position).getName());
         holder.description.setText(valves.get(position).getDescription());
         holder.icon.setImageResource(valves.get(position).getIconId());
+        holder.aSwitch.setChecked(valves.get(position).getState());
     }
 
     @Override
@@ -52,15 +59,26 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
         TextView name;
         TextView description;
         ImageView icon;
+        Switch aSwitch;
 
         ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.valve_name);
             description = itemView.findViewById(R.id.valve_description);
             icon = itemView.findViewById(R.id.valve_icon);
+            aSwitch = itemView.findViewById(R.id.valve_switch);
             itemView.setOnClickListener(v -> {
                 onClickListener.onClick(valves.get(getAdapterPosition()));
             });
+
+            aSwitch.setOnClickListener(v -> {
+                    if (aSwitch.isChecked()) {
+                        repository.updateVale(valves.get(getAdapterPosition()).getId(),"on");
+                    } else {
+                        repository.updateVale(valves.get(getAdapterPosition()).getId(),"off");
+                    }
+                }
+            );
         }
     }
 

@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        homeViewModel.searchForPokemon();
         return root;
     }
 
@@ -42,20 +41,22 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         valvesList = getView().findViewById(R.id.rv);
-
         valvesList.hasFixedSize();
         valvesList.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         ArrayList<Valve> valves = new ArrayList<>();
 
-        valves.add(new Valve("Grass","The hose for watering the grass behind house",R.drawable.grass_icon));
-        valves.add(new Valve("Trees","Fruit trees in garden. Apples, pears, apricots and plums",R.drawable.tree_icon));
-        valves.add(new Valve("Flowers","Valve for flowers on balcony",R.drawable.flower_icon));
-        valves.add(new Valve("Bushes","All bushes in the garden and in front of the house",R.drawable.bush_icon));
+        /*valves.add(new Valve(1,"Grass","The hose for watering the grass behind house",R.drawable.grass_icon,true));
+        valves.add(new Valve(2,"Trees","Fruit trees in garden. Apples, pears, apricots and plums",R.drawable.tree_icon,true));
+        valves.add(new Valve(3,"Flowers","Valve for flowers on balcony",R.drawable.flower_icon,false));
+        valves.add(new Valve(4,"Bushes","All bushes in the garden and in front of the house",R.drawable.bush_icon,false));
+        */
 
+        homeViewModel.searchForPokemon();
         homeViewModel.getSearchedPokemon().observe(getViewLifecycleOwner(), valve -> {
-            valves.add(valve);
+            valves.addAll(valve);
         });
+
 
         valveAdapter = new ValveAdapter(valves);
 

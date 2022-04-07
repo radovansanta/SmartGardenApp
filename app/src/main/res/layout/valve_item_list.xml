@@ -55,11 +55,12 @@
                     android:textColor="?android:attr/textColorSecondary" />
             </LinearLayout>
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
+            <Switch
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
                 android:checked="true"
+                android:id="@+id/valve_switch"
                 android:paddingRight="20dp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

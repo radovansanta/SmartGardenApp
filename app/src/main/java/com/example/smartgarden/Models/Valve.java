@@ -1,14 +1,22 @@
 package com.example.smartgarden.Models;
 
 public class Valve {
+    private Integer id;
     private String name;
     private String description;
-    private int iconId;
+    private int icon;
+    private boolean state;
 
-    public Valve(String name, String description, int iconId){
+    public Valve(Integer id,String name, String description, int icon, boolean state){
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.iconId = iconId;
+        this.icon = icon;
+        this.state = state;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -20,6 +28,12 @@ public class Valve {
     }
 
     public int getIconId() {
-        return iconId;
+        return icon;
+    }
+
+    public boolean getState() {return state;}
+
+    public Valve getValve() {
+        return new Valve(id, name, description,icon,state);
     }
 }

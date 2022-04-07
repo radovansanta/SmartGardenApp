@@ -10,6 +10,10 @@ import androidx.lifecycle.ViewModel;
 import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Networking.Repositories.ValveRepository;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeViewModel extends ViewModel {
 
     ValveRepository repository;
@@ -23,7 +27,7 @@ public class HomeViewModel extends ViewModel {
         repository.searchForValve();
     }
 
-    public LiveData<Valve> getSearchedPokemon() {
+    public LiveData<List<Valve>> getSearchedPokemon() {
         return repository.getSearchedValves();
     }
 

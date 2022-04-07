@@ -11,7 +11,7 @@ public class ServiceGenerator {
     public static ValveApi getValveApi() {
         if (valveApi == null) {
             valveApi = new Retrofit.Builder()
-                    .baseUrl("https://run.mocky.io")
+                    .baseUrl("https://sheltered-forest-94333.herokuapp.com")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ValveApi.class);

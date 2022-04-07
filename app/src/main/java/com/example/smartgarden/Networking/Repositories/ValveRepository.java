@@ -7,6 +7,11 @@ import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Networking.ApiResponses.ValveResponse;
 import com.example.smartgarden.Networking.Apis.ValveApi;
 import com.example.smartgarden.Networking.Services.ServiceGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -14,7 +19,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class ValveRepository {
     private static ValveRepository instance;
-    private final MutableLiveData<Valve> searchedValves;
+    private final MutableLiveData<List<Valve>> searchedValves;
 
     private ValveRepository() {
         searchedValves = new MutableLiveData<>();
@@ -27,26 +32,47 @@ public class ValveRepository {
         return instance;
     }
 
-    public LiveData<Valve> getSearchedValves() {
+    public LiveData<List<Valve>> getSearchedValves() {
         return searchedValves;
     }
 
     public void searchForValve() {
         ValveApi valveApi = ServiceGenerator.getValveApi();
-        Call<ValveResponse> call = valveApi.getValve();
-        call.enqueue(new Callback<ValveResponse>() {
+        Call<List<Valve>> call = valveApi.getValve();
+        call.enqueue(new Callback<List<Valve>>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<ValveResponse> call, Response<ValveResponse> response) {
+            public void onResponse(Call<List<Valve>> call, Response<List<Valve>> response) {
                 if (response.isSuccessful()) {
-                    searchedValves.setValue(response.body().getValve());
+                    searchedValves.setValue(response.body());
                 }
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<ValveResponse> call, Throwable t) {
+            public void onFailure(Call<List<Valve>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :(");
             }
         });
     }
-}
+
+    public void updateVale(int id,String state) {
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<ResponseBody> call = valveApi.updateValve(id,state);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Log.i("Retrofit",response.message());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :(");
+            }
+        });
+        }
+    }
+
