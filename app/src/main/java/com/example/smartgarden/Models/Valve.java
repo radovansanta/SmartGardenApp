@@ -1,4 +1,4 @@
-package com.example.smartgarden;
+package com.example.smartgarden.Models;
 
 public class Valve {
     private String name;

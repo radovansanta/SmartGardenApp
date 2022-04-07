@@ -1,4 +1,4 @@
-package com.example.smartgarden.ui.home;
+package com.example.smartgarden.ViewModels;
 
 import android.content.Context;
 import android.os.Vibrator;

@@ -1,9 +1,11 @@
-package com.example.smartgarden.ui.home;
+package com.example.smartgarden.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -12,8 +14,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartgarden.R;
-import com.example.smartgarden.Valve;
-import com.example.smartgarden.ValveAdapter;
+import com.example.smartgarden.Models.Valve;
+import com.example.smartgarden.Models.ValveAdapter;
+import com.example.smartgarden.ViewModels.HomeViewModel;
 import com.example.smartgarden.databinding.FragmentHomeBinding;
 import java.util.ArrayList;
 
@@ -34,6 +37,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         valvesList = getView().findViewById(R.id.rv);
@@ -52,7 +56,7 @@ public class HomeFragment extends Fragment {
 
 
         valveAdapter.setOnClickListener(valve -> {
-            //Toast.makeText(view.getContext(), valve.getName(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(view.getContext(), , Toast.LENGTH_SHORT).show();
             homeViewModel.select(valve.getName());
             NavHostFragment.findNavController(this).navigate(R.id.editValve);
 

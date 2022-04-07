@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E8ECEF"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".Fragments.GalleryFragment">
 
     <LinearLayout
         android:id="@+id/container"

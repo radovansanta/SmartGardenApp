@@ -1,4 +1,4 @@
-package com.example.smartgarden.ui.slideshow;
+package com.example.smartgarden.ViewModels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

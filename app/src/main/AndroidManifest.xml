@@ -11,7 +11,7 @@
         android:theme="@style/Theme.SmartGarden">
 
         <activity
-            android:name=".MainActivity3"
+            android:name=".Activities.MainActivity3"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

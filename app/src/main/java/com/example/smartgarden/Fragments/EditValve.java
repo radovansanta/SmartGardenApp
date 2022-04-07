@@ -1,6 +1,5 @@
-package com.example.smartgarden;
+package com.example.smartgarden.Fragments;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -12,9 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.example.smartgarden.ui.home.HomeViewModel;
+import com.example.smartgarden.R;
+import com.example.smartgarden.ViewModels.HomeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class EditValve extends Fragment {

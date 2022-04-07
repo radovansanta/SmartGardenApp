@@ -1,4 +1,4 @@
-package com.example.smartgarden;
+package com.example.smartgarden.Models;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.smartgarden.R;
 
 import java.util.ArrayList;
 

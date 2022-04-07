@@ -1,15 +1,15 @@
-package com.example.smartgarden.ui.gallery;
+package com.example.smartgarden.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.smartgarden.ViewModels.GalleryViewModel;
 import com.example.smartgarden.databinding.FragmentGalleryBinding;
 
 public class GalleryFragment extends Fragment {
