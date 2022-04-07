@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        homeViewModel.searchForPokemon();
         return root;
     }
 
@@ -51,6 +52,10 @@ public class HomeFragment extends Fragment {
         valves.add(new Valve("Trees","Fruit trees in garden. Apples, pears, apricots and plums",R.drawable.tree_icon));
         valves.add(new Valve("Flowers","Valve for flowers on balcony",R.drawable.flower_icon));
         valves.add(new Valve("Bushes","All bushes in the garden and in front of the house",R.drawable.bush_icon));
+
+        homeViewModel.getSearchedPokemon().observe(getViewLifecycleOwner(), valve -> {
+            valves.add(valve);
+        });
 
         valveAdapter = new ValveAdapter(valves);
 

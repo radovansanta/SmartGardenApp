@@ -7,10 +7,25 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartgarden.Models.Valve;
+import com.example.smartgarden.Networking.Repositories.ValveRepository;
+
 public class HomeViewModel extends ViewModel {
 
+    ValveRepository repository;
     private final MutableLiveData<String> selected = new MutableLiveData<>();
 
+    public HomeViewModel() {
+        repository = ValveRepository.getInstance();
+    }
+
+    public void searchForPokemon() {
+        repository.searchForValve();
+    }
+
+    public LiveData<Valve> getSearchedPokemon() {
+        return repository.getSearchedValves();
+    }
 
     public void select(String item) {
         selected.setValue(item);
