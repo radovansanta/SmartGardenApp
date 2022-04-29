@@ -43,8 +43,9 @@ public class SlideshowFragment extends Fragment {
         List<String> data = new ArrayList<>();
 
         // sample data
-        data.add("Data 1");
-        data.add("Data 2");
+        data.add("Grass");
+        data.add("Trees");
+        data.add("Flowers");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, data);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
