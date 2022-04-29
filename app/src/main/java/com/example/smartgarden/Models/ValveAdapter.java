@@ -16,16 +16,22 @@ import com.example.smartgarden.Networking.Repositories.ValveRepository;
 import com.example.smartgarden.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> {
 
-    private ArrayList<Valve> valves;
+    private List<Valve> valves;
     private OnClickListener onClickListener;
     ValveRepository repository;
 
-    public ValveAdapter(ArrayList<Valve> valves) {
-        this.valves = valves;
+    public ValveAdapter() {
+        valves = new ArrayList<>();
         repository = ValveRepository.getInstance();
+    }
+
+    public void setData(List<Valve> data){
+        valves = data;
+        notifyDataSetChanged();
     }
 
     public void setOnClickListener(OnClickListener listener) {
@@ -45,7 +51,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(valves.get(position).getName());
         holder.description.setText(valves.get(position).getDescription());
-        holder.icon.setImageResource(valves.get(position).getIconId());
+        //holder.icon.setImageResource(valves.get(position).getIconId());
         holder.aSwitch.setChecked(valves.get(position).getState());
     }
 

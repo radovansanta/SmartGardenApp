@@ -44,21 +44,20 @@ public class HomeFragment extends Fragment {
         valvesList.hasFixedSize();
         valvesList.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        ArrayList<Valve> valves = new ArrayList<>();
-
         /*valves.add(new Valve(1,"Grass","The hose for watering the grass behind house",R.drawable.grass_icon,true));
         valves.add(new Valve(2,"Trees","Fruit trees in garden. Apples, pears, apricots and plums",R.drawable.tree_icon,true));
         valves.add(new Valve(3,"Flowers","Valve for flowers on balcony",R.drawable.flower_icon,false));
         valves.add(new Valve(4,"Bushes","All bushes in the garden and in front of the house",R.drawable.bush_icon,false));
         */
 
+        valveAdapter = new ValveAdapter();
+        valvesList.setAdapter(valveAdapter);
+
         homeViewModel.searchForPokemon();
         homeViewModel.getSearchedPokemon().observe(getViewLifecycleOwner(), valve -> {
-            valves.addAll(valve);
+            valveAdapter.setData(valve);
         });
 
-
-        valveAdapter = new ValveAdapter(valves);
 
 
         valveAdapter.setOnClickListener(valve -> {
@@ -69,7 +68,12 @@ public class HomeFragment extends Fragment {
 
         });
 
-        valvesList.setAdapter(valveAdapter);
+    }
+
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 
     @Override
