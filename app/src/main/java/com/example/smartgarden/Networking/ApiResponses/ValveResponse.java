@@ -14,4 +14,7 @@ public class ValveResponse {
     public Valve getValve() {
         return new Valve(id, name, description,icon,state);
     }
+    public String getValveNames() {
+        return name;
+    }
 }

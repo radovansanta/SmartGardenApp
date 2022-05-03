@@ -52,7 +52,7 @@
 
 
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
@@ -176,16 +176,16 @@
             android:textAppearance="?attr/textAppearanceBody2"
             android:textColor="?android:attr/textColorSecondary" />
 
-    <TimePicker
-        android:id="@+id/datePicker1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:timePickerMode="spinner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TimePicker
+            android:id="@+id/startTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:timePickerMode="spinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -219,7 +219,7 @@
 
 
         <TimePicker
-            android:id="@+id/datePicker2"
+            android:id="@+id/endTimePicker"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -232,7 +232,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <Button
-            android:id="@+id/button_id"
+            android:id="@+id/buttonCreateCommands"
             android:layout_margin="10dp"
             android:padding="5dp"
             android:layout_height="wrap_content"

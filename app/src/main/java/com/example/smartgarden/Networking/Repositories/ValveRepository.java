@@ -3,10 +3,14 @@ package com.example.smartgarden.Networking.Repositories;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.example.smartgarden.Models.Command;
 import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Networking.ApiResponses.ValveResponse;
 import com.example.smartgarden.Networking.Apis.ValveApi;
 import com.example.smartgarden.Networking.Services.ServiceGenerator;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +24,11 @@ import retrofit2.internal.EverythingIsNonNull;
 public class ValveRepository {
     private static ValveRepository instance;
     private final MutableLiveData<List<Valve>> searchedValves;
+    private final MutableLiveData<List<String>> searchedValvesNames;
 
     private ValveRepository() {
         searchedValves = new MutableLiveData<>();
+        searchedValvesNames = new MutableLiveData<>();
     }
 
     public static synchronized ValveRepository getInstance() {
@@ -34,6 +40,9 @@ public class ValveRepository {
 
     public LiveData<List<Valve>> getSearchedValves() {
         return searchedValves;
+    }
+    public LiveData<List<String>> getSearchedValvesNames() {
+        return searchedValvesNames;
     }
 
     public void searchForValve() {
@@ -50,6 +59,25 @@ public class ValveRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<List<Valve>> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :(");
+            }
+        });
+    }
+
+    public void searchForValveNames() {
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<List<String>> call = valveApi.getValveNames();
+        call.enqueue(new Callback<List<String>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if (response.isSuccessful()) {
+                    searchedValvesNames.setValue(response.body());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :(");
             }
         });
@@ -73,6 +101,26 @@ public class ValveRepository {
                 Log.i("Retrofit", "Something went wrong :(");
             }
         });
-        }
     }
+
+    public void addCommand(Command command, String time){
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<ResponseBody> call = valveApi.addCommand(command, time);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Log.i("Retrofit",response.message());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :(");
+            }
+        });
+    }
+}
 
