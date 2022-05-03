@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -47,6 +48,8 @@ public class SlideshowFragment extends Fragment {
     private TimePicker startTimePicker;
     private TimePicker endTimePicker;
     private SlideshowViewModel slideshowViewModel;
+    private Spinner spinner;
+    private List<Valve> valvesList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class SlideshowFragment extends Fragment {
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Spinner spinner = (Spinner) root.findViewById(R.id.planets_spinner);
+        spinner = (Spinner) root.findViewById(R.id.planets_spinner);
         addCommandsButton = root.findViewById(R.id.buttonCreateCommands);
         datePicker = root.findViewById(R.id.datePicker);
         startTimePicker = root.findViewById(R.id.startTimePicker);
@@ -63,6 +66,12 @@ public class SlideshowFragment extends Fragment {
 
 
         List<String> data = new ArrayList<>();
+
+        slideshowViewModel.searchForPokemon();
+        slideshowViewModel.getSearchedPokemon().observe(getViewLifecycleOwner(), valve -> {
+            valvesList.clear();
+            valvesList.addAll(valve);
+        });
 
 
         slideshowViewModel.searchForValves();
@@ -74,20 +83,31 @@ public class SlideshowFragment extends Fragment {
             spinner.setAdapter(dataAdapter);
         });
 
-
-
-
-
-
         return root;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
         addCommandsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                slideshowViewModel.addCommands(1,datePicker,startTimePicker,endTimePicker);
+
+                slideshowViewModel.addCommands(
+                        slideshowViewModel.findId(valvesList,spinner.getSelectedItem().toString()),
+                        datePicker,
+                        startTimePicker,
+                        endTimePicker);
+
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_home);
+
+                /*
+                slideshowViewModel.getSearchedValveByName().observe(getViewLifecycleOwner(), valve -> {
+                    System.out.println("Something");
+                    slideshowViewModel.addCommands(valve.getId(), datePicker,startTimePicker,endTimePicker);
+                });
+
+                 */
+
             }
         });
 

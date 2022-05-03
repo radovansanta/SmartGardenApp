@@ -23,12 +23,14 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class ValveRepository {
     private static ValveRepository instance;
+    private final MutableLiveData<Valve> searchedValve;
     private final MutableLiveData<List<Valve>> searchedValves;
     private final MutableLiveData<List<String>> searchedValvesNames;
 
     private ValveRepository() {
         searchedValves = new MutableLiveData<>();
         searchedValvesNames = new MutableLiveData<>();
+        searchedValve = new MutableLiveData<>();
     }
 
     public static synchronized ValveRepository getInstance() {
@@ -41,8 +43,30 @@ public class ValveRepository {
     public LiveData<List<Valve>> getSearchedValves() {
         return searchedValves;
     }
+    public LiveData<Valve> getSearchedValveByName() {
+        return searchedValve;
+    }
     public LiveData<List<String>> getSearchedValvesNames() {
         return searchedValvesNames;
+    }
+
+    public void searchForValveByName(String name) {
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<Valve> call = valveApi.getValveByName(name);
+        call.enqueue(new Callback<Valve>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<Valve> call, Response<Valve> response) {
+                if (response.isSuccessful()) {
+                    searchedValve.setValue(response.body());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<Valve> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :(");
+            }
+        });
     }
 
     public void searchForValve() {

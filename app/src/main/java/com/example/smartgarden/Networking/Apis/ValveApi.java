@@ -25,6 +25,9 @@ public interface ValveApi {
     @GET("api/valves/names")
     Call<List<String>> getValveNames();
 
+    @GET("/valves/name/{name}")
+    Call<Valve> getValveByName(@Path("name") String name);
+
     @POST("api/valves/{id}/{state}")
     Call<ResponseBody> updateValve(@Path("id") int id, @Path("state") String state);
 

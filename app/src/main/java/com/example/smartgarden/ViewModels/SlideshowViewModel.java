@@ -23,9 +23,34 @@ public class SlideshowViewModel extends ViewModel {
         repository = ValveRepository.getInstance();
     }
 
+    public void searchForPokemon() {
+        repository.searchForValve();
+    }
+
+    public LiveData<List<Valve>> getSearchedPokemon() {
+        return repository.getSearchedValves();
+    }
+
+    public void searchForValveByName(String name){
+        repository.searchForValveByName(name);
+    }
+
+    public LiveData<Valve> getSearchedValveByName(){
+        return repository.getSearchedValveByName();
+    }
+
 
     public void searchForValves() {
         repository.searchForValveNames();
+    }
+
+    public int findId(List<Valve> valveList, String name){
+        for (Valve valve:valveList) {
+            if (valve.getName().equals(name)){
+                return valve.getId();
+            }
+        }
+        return 0;
     }
 
     public LiveData<List<String>> getSearchedValves() {
@@ -46,9 +71,7 @@ public class SlideshowViewModel extends ViewModel {
     }
 
     public void addCommands(int valve_id, DatePicker datePicker, TimePicker startTimePicker, TimePicker endTimePicker){
-        String startTime = convertDateTime(datePicker,startTimePicker);
-        String endTime = convertDateTime(datePicker,endTimePicker);
-        addCommand(valve_id,true,startTime);
-        addCommand(valve_id,false,endTime);
+        addCommand(valve_id,true,convertDateTime(datePicker,startTimePicker));
+        addCommand(valve_id,false,convertDateTime(datePicker,endTimePicker));
     }
 }
