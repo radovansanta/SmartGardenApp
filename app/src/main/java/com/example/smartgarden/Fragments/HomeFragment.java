@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void loadData(){
-        valveAdapter = new ValveAdapter();
+        valveAdapter = new ValveAdapter(getViewLifecycleOwner());
         valvesList.setAdapter(valveAdapter);
 
         homeViewModel.searchForPokemon();

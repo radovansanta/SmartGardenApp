@@ -7,6 +7,7 @@
     android:background="#E8ECEF"
     tools:context=".Fragments.GalleryFragment">
 
+
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -24,9 +25,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp">
 
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -37,41 +42,56 @@
                     android:contentDescription="GrassSymbol"
                     android:src="@drawable/grass_icon" />
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="15dp"
+                android:paddingBottom="10dp"
+                android:orientation="vertical">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="28.3.2022"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:text="Grass"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
-                    android:layout_weight="0.5"
+                    android:layout_weight="1"
+                    android:text="Monday 02.05"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="?android:attr/textColorSecondary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:text="17:50"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0.3"
-                    android:text="ON"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+            </LinearLayout>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="FINISHED"
+                    android:text="OFF"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <ImageView
+                    android:id="@+id/currentState"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:contentDescription="GrassSymbol"
+                    android:src="@drawable/officon" />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

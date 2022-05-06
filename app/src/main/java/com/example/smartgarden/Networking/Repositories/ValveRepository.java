@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.smartgarden.Models.Command;
+import com.example.smartgarden.Models.ResponseM;
 import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Networking.ApiResponses.ValveResponse;
 import com.example.smartgarden.Networking.Apis.ValveApi;
@@ -19,6 +20,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class ValveRepository {
@@ -26,11 +28,13 @@ public class ValveRepository {
     private final MutableLiveData<Valve> searchedValve;
     private final MutableLiveData<List<Valve>> searchedValves;
     private final MutableLiveData<List<String>> searchedValvesNames;
+    private final MutableLiveData<ResponseM> updateValveResponse;
 
     private ValveRepository() {
         searchedValves = new MutableLiveData<>();
         searchedValvesNames = new MutableLiveData<>();
         searchedValve = new MutableLiveData<>();
+        updateValveResponse = new MutableLiveData<>();
     }
 
     public static synchronized ValveRepository getInstance() {
@@ -48,6 +52,9 @@ public class ValveRepository {
     }
     public LiveData<List<String>> getSearchedValvesNames() {
         return searchedValvesNames;
+    }
+    public LiveData<ResponseM> getUpdateValveResponse() {
+        return updateValveResponse;
     }
 
     public void searchForValveByName(String name) {
@@ -109,21 +116,30 @@ public class ValveRepository {
 
     public void updateVale(int id,String state) {
         ValveApi valveApi = ServiceGenerator.getValveApi();
-        Call<ResponseBody> call = valveApi.updateValve(id,state);
+        Call<ResponseM> call = valveApi.updateValve(id,state);
+        ResponseM responseM = new ResponseM("");
 
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<ResponseM>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ResponseM> call, Response<ResponseM> response) {
                 if (response.isSuccessful()) {
-                    Log.i("Retrofit",response.message());
+                    Log.i("Retrofit", response.body().getMessage());
+                    updateValveResponse.setValue(response.body());
                 }
             }
-            @EverythingIsNonNull
+
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
+            public void onFailure(Call<ResponseM> call, Throwable t) {
+                System.out.println(call);
+                System.out.println(call);
+                System.out.println(t);
+                Log.i("Error",call.toString());
+                updateValveResponse.setValue(new ResponseM("Error"));
+
             }
+
+
         });
     }
 

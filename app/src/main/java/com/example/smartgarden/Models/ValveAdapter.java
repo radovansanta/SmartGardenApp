@@ -1,6 +1,8 @@
 package com.example.smartgarden.Models;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -23,10 +25,13 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
     private List<Valve> valves;
     private OnClickListener onClickListener;
     ValveRepository repository;
+    private View view;
+    private LifecycleOwner lifecycle;
 
-    public ValveAdapter() {
+    public ValveAdapter(LifecycleOwner lifecycle) {
         valves = new ArrayList<>();
         repository = ValveRepository.getInstance();
+        this.lifecycle = lifecycle;
     }
 
     public void setData(List<Valve> data){
@@ -43,7 +48,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.valve_item_list, parent, false);
+        view = inflater.inflate(R.layout.valve_item_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -59,6 +64,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
     public int getItemCount() {
         return valves.size();
     }
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -80,8 +86,20 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
             aSwitch.setOnClickListener(v -> {
                     if (aSwitch.isChecked()) {
                         repository.updateVale(valves.get(getAdapterPosition()).getId(),"on");
+                        repository.getUpdateValveResponse().observe(lifecycle, valve -> {
+                            Toast.makeText(itemView.getContext(), valve.getMessage() , Toast.LENGTH_SHORT).show();
+                            if (!valve.getMessage().equals("Valve should be changed to on")){
+                                aSwitch.setChecked(false);
+                            }
+                        });
                     } else {
                         repository.updateVale(valves.get(getAdapterPosition()).getId(),"off");
+                        repository.getUpdateValveResponse().observe(lifecycle, valve -> {
+                            Toast.makeText(itemView.getContext(), valve.getMessage() , Toast.LENGTH_SHORT).show();
+                            if (!valve.getMessage().equals("Valve should be changed to off")){
+                                aSwitch.setChecked(true);
+                            }
+                        });
                     }
                 }
             );
