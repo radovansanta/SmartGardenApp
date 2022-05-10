@@ -27,4 +27,10 @@
         android:name="com.example.smartgarden.Fragments.EditValve"
         android:label="Edit valve"
         tools:layout="@layout/valve_edit" />
+
+    <fragment
+        android:id="@+id/editValveIcon"
+        android:name="com.example.smartgarden.Fragments.EditValveIcon"
+        android:label="Choose icon"
+        tools:layout="@layout/fragment_edit_valve_icon" />
 </navigation>

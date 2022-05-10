@@ -17,7 +17,7 @@ import java.util.List;
 public class HomeViewModel extends ViewModel {
 
     ValveRepository repository;
-    private final MutableLiveData<String> selected = new MutableLiveData<>();
+    private final MutableLiveData<Valve> selected = new MutableLiveData<>();
 
     public HomeViewModel() {
         repository = ValveRepository.getInstance();
@@ -31,11 +31,11 @@ public class HomeViewModel extends ViewModel {
         return repository.getSearchedValves();
     }
 
-    public void select(String item) {
+    public void select(Valve item) {
         selected.setValue(item);
     }
 
-    public LiveData<String> getSelected() {
+    public LiveData<Valve> getSelected() {
         return selected;
     }
 

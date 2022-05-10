@@ -99,17 +99,6 @@ public class SlideshowFragment extends Fragment {
                         endTimePicker);
 
                 Toast.makeText(view.getContext(), "Schedule created!", Toast.LENGTH_SHORT).show();
-
-                //NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_home);
-
-                /*
-                slideshowViewModel.getSearchedValveByName().observe(getViewLifecycleOwner(), valve -> {
-                    System.out.println("Something");
-                    slideshowViewModel.addCommands(valve.getId(), datePicker,startTimePicker,endTimePicker);
-                });
-
-                 */
-
             }
         });
 

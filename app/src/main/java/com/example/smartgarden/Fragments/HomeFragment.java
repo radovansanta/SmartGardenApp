@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
 
         valveAdapter.setOnClickListener(valve -> {
             //Toast.makeText(view.getContext(), , Toast.LENGTH_SHORT).show();
-            homeViewModel.select(valve.getName());
+            homeViewModel.select(valve);
             NavHostFragment.findNavController(this).navigate(R.id.editValve);
 
 
