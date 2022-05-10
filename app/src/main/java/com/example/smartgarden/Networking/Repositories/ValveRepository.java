@@ -143,9 +143,9 @@ public class ValveRepository {
         });
     }
 
-    public void addCommand(Command command, String time){
+    public void addCommand(Command command, String startTime, String endTime){
         ValveApi valveApi = ServiceGenerator.getValveApi();
-        Call<ResponseBody> call = valveApi.addCommand(command, time);
+        Call<ResponseBody> call = valveApi.addCommand(command, startTime,endTime);
 
         call.enqueue(new Callback<ResponseBody>() {
             @EverythingIsNonNull

@@ -32,7 +32,10 @@ public interface ValveApi {
     @GET("api/valves/{id}/{state}")
     Call<ResponseM> updateValve(@Path("id") int id, @Path("state") String state);
 
-    @POST("api/commands/{time}")
-    Call<ResponseBody> addCommand(@Body Command body, @Path("time") String time);
+    @POST("api/commands/{startTime}/{endTime}")
+    Call<ResponseBody> addCommand(
+            @Body Command body,
+            @Path("startTime") String startTime,
+            @Path("endTime") String endTime);
 
 }

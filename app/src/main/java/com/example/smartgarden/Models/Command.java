@@ -8,9 +8,8 @@ public class Command {
     private Calendar date_time;
     private boolean state;
 
-    public Command(int valveId, boolean state){
+    public Command(int valveId){
         this.valve_id = valveId;
-        this.state = state;
     }
 
 

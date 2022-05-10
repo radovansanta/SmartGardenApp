@@ -65,13 +65,12 @@ public class SlideshowViewModel extends ViewModel {
                 timePicker.getMinute()+":00.000+00:00");
     }
 
-    private void addCommand(int valve_id, boolean state, String time){
-        Command command = new Command(valve_id,state);
-        repository.addCommand(command, time);
+    private void addCommand(int valve_id, String startTime, String endTime){
+        Command command = new Command(valve_id);
+        repository.addCommand(command, startTime, endTime);
     }
 
     public void addCommands(int valve_id, DatePicker datePicker, TimePicker startTimePicker, TimePicker endTimePicker){
-        addCommand(valve_id,true,convertDateTime(datePicker,startTimePicker));
-        addCommand(valve_id,false,convertDateTime(datePicker,endTimePicker));
+        addCommand(valve_id,convertDateTime(datePicker,startTimePicker),convertDateTime(datePicker,endTimePicker));
     }
 }
