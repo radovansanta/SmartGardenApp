@@ -1,66 +1,89 @@
 package com.example.smartgarden.Fragments;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.smartgarden.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditValveIcon#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.smartgarden.Models.IconAdapter;
+import com.example.smartgarden.R;
+import com.example.smartgarden.Models.Valve;
+import com.example.smartgarden.Models.ValveAdapter;
+import com.example.smartgarden.ViewModels.HomeViewModel;
+import com.example.smartgarden.databinding.FragmentEditValveIconBinding;
+import com.example.smartgarden.databinding.FragmentHomeBinding;
+import java.util.ArrayList;
+
 public class EditValveIcon extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    RecyclerView iconsList;
+    IconAdapter iconsAdapter;
+    private FragmentEditValveIconBinding binding;
+    private HomeViewModel homeViewModel;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-    public EditValveIcon() {
-        // Required empty public constructor
+        binding = FragmentEditValveIconBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        iconsList = root.findViewById(R.id.rv_icons);
+        loadData();
+
+        iconsList.hasFixedSize();
+        int numberOfColumns = 3;
+        iconsList.setLayoutManager(new GridLayoutManager(root.getContext(), numberOfColumns));
+
+
+        iconsAdapter.setOnClickListener(icon -> {
+            getActivity().onBackPressed();
+        });
+
+        return root;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditValveIcon.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EditValveIcon newInstance(String param1, String param2) {
-        EditValveIcon fragment = new EditValveIcon();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public void loadData(){
+        iconsAdapter = new IconAdapter(getViewLifecycleOwner());
+        iconsList.setAdapter(iconsAdapter);
+
+        ArrayList<Drawable> dat = new ArrayList<>();
+        dat.add((Drawable) getResources().getDrawable( R.drawable.grass_icon ));
+        dat.add((Drawable) getResources().getDrawable( R.drawable.tree_icon ));
+        dat.add((Drawable) getResources().getDrawable( R.drawable.flower_icon ));
+        dat.add((Drawable) getResources().getDrawable( R.drawable.bush_icon ));
+
+        iconsAdapter.setData(dat);
+    }
+
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+
+    }
+
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_valve_icon, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

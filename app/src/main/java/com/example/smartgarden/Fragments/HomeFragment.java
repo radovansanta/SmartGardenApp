@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
     @SuppressLint("ResourceType")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        valvesList = getView().findViewById(R.id.rv);
+        valvesList = view.findViewById(R.id.rv);
         valvesList.hasFixedSize();
         valvesList.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
