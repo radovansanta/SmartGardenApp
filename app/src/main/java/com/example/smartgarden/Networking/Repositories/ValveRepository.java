@@ -162,5 +162,28 @@ public class ValveRepository {
             }
         });
     }
+
+    public void updateValve(int id, Valve valve){
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<Valve> call = valveApi.updateValve(id, valve);
+
+        call.enqueue(new Callback<Valve>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<Valve> call, Response<Valve> response) {
+                if (response.isSuccessful()) {
+                    Log.i("Retrofit",response.message());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<Valve> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :(");
+            }
+        });
+    }
+
+
+
 }
 

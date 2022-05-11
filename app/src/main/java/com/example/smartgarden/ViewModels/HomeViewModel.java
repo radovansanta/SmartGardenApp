@@ -36,6 +36,10 @@ public class HomeViewModel extends ViewModel {
         selected.setValue(item);
     }
 
+    public void updateValve(Valve valve){
+        repository.updateValve(valve.getId(),valve);
+    }
+
     public LiveData<Valve> getSelected() {
         return selected;
     }

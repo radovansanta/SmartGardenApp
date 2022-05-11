@@ -8,12 +8,17 @@
 
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/grass_icon"
-        android:id="@+id/iconChange">
-    </ImageView>
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/grass_icon"
+            android:id="@+id/iconChange">
+        </ImageView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </LinearLayout>

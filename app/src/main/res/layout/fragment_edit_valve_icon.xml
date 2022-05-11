@@ -34,14 +34,14 @@
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
                         android:textColor="@color/white"
-                        android:text="Let’s see and manage"
+                        android:text="Choose one of the icon that you like"
                         android:textAppearance="?attr/textAppearanceBody1"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="VALVES IN GARDEN"
+                        android:text="CHOOSE ICON"
                         android:textColor="@color/white"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
 
@@ -61,17 +61,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/rv_icons"/>
 
-                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
         </FrameLayout>

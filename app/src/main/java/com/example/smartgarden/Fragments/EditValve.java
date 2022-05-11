@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartgarden.Models.IconAdapter;
+import com.example.smartgarden.Networking.Repositories.ValveRepository;
 import com.example.smartgarden.R;
 import com.example.smartgarden.ViewModels.HomeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -41,7 +42,6 @@ public class EditValve extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
-
 
         return inflater.inflate(R.layout.valve_edit, container, false);
 
@@ -125,15 +125,13 @@ public class EditValve extends Fragment {
             }
         });
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        System.out.println("Resume");
-        mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
-            System.out.println(valve.getIconId());
-
+        btnEditValve.setOnClickListener(onClick ->{
+            mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
+                mViewModel.updateValve(valve);
+                getActivity().onBackPressed();
+            });
         });
+
     }
+
 }
