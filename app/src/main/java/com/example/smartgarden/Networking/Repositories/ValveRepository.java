@@ -1,26 +1,21 @@
 package com.example.smartgarden.Networking.Repositories;
 
-import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.smartgarden.Models.Command;
+import com.example.smartgarden.Models.Log;
 import com.example.smartgarden.Models.ResponseM;
 import com.example.smartgarden.Models.Valve;
-import com.example.smartgarden.Networking.ApiResponses.ValveResponse;
 import com.example.smartgarden.Networking.Apis.ValveApi;
 import com.example.smartgarden.Networking.Services.ServiceGenerator;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Body;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class ValveRepository {
@@ -29,12 +24,14 @@ public class ValveRepository {
     private final MutableLiveData<List<Valve>> searchedValves;
     private final MutableLiveData<List<String>> searchedValvesNames;
     private final MutableLiveData<ResponseM> updateValveResponse;
+    private final MutableLiveData<List<Log>> searchedSchedulerLogs;
 
     private ValveRepository() {
         searchedValves = new MutableLiveData<>();
         searchedValvesNames = new MutableLiveData<>();
         searchedValve = new MutableLiveData<>();
         updateValveResponse = new MutableLiveData<>();
+        searchedSchedulerLogs = new MutableLiveData<>();
     }
 
     public static synchronized ValveRepository getInstance() {
@@ -56,6 +53,28 @@ public class ValveRepository {
     public LiveData<ResponseM> getUpdateValveResponse() {
         return updateValveResponse;
     }
+    public LiveData<List<Log>> getSearchedSchedulerLogs() {
+        return searchedSchedulerLogs;
+    }
+
+    public void searchForSchedulerLogs() {
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<List<Log>> call = valveApi.getSchedulerLogs();
+        call.enqueue(new Callback<List<Log>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<Log>> call, Response<List<Log>> response) {
+                if (response.isSuccessful()) {
+                    searchedSchedulerLogs.setValue(response.body());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<Log>> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
+    }
 
     public void searchForValveByName(String name) {
         ValveApi valveApi = ServiceGenerator.getValveApi();
@@ -71,7 +90,7 @@ public class ValveRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<Valve> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
+                System.out.println("Retrofit Something went wrong :(");
             }
         });
     }
@@ -90,7 +109,7 @@ public class ValveRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<List<Valve>> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
+                System.out.println("Retrofit Something went wrong :(");
             }
         });
     }
@@ -109,7 +128,7 @@ public class ValveRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
+                System.out.println("Retrofit Something went wrong :(");
             }
         });
     }
@@ -124,7 +143,6 @@ public class ValveRepository {
             @Override
             public void onResponse(Call<ResponseM> call, Response<ResponseM> response) {
                 if (response.isSuccessful()) {
-                    Log.i("Retrofit", response.body().getMessage());
                     updateValveResponse.setValue(response.body());
                 }
             }
@@ -134,7 +152,7 @@ public class ValveRepository {
                 System.out.println(call);
                 System.out.println(call);
                 System.out.println(t);
-                Log.i("Error",call.toString());
+                System.out.println("Retrofit Something went wrong :(");
                 updateValveResponse.setValue(new ResponseM("Error"));
 
             }
@@ -152,13 +170,13 @@ public class ValveRepository {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Log.i("Retrofit",response.message());
+                    System.out.println("Retrofit Something went wrong :(");
                 }
             }
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
+                System.out.println("Retrofit Something went wrong :(");
             }
         });
     }
@@ -172,13 +190,13 @@ public class ValveRepository {
             @Override
             public void onResponse(Call<Valve> call, Response<Valve> response) {
                 if (response.isSuccessful()) {
-                    Log.i("Retrofit",response.message());
+                    System.out.println("Retrofit Something went wrong :(");
                 }
             }
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<Valve> call, Throwable t) {
-                Log.i("Retrofit", "Something went wrong :(");
+                System.out.println("Retrofit Something went wrong :(");
             }
         });
     }

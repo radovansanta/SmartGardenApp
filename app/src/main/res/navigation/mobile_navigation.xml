@@ -8,29 +8,35 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.smartgarden.Fragments.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_valves"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.smartgarden.Fragments.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_switch_logs"
+        android:name="com.example.smartgarden.Fragments.SwitchLogsFragment"
+        android:label="@string/menu_switch_logs"
+        tools:layout="@layout/switch_logs" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.smartgarden.Fragments.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_scheduler_logs"
+        android:name="com.example.smartgarden.Fragments.SchedulerLogs"
+        android:label="@string/menu_scheduler_logs"
+        tools:layout="@layout/fragment_scheduler_logs" />
+
+    <fragment
+        android:id="@+id/nav_scheduler"
+        android:name="com.example.smartgarden.Fragments.SchedulerFragment"
+        android:label="@string/menu_scheduler"
+        tools:layout="@layout/fragment_scheduler" />
     <fragment
         android:id="@+id/editValve"
         android:name="com.example.smartgarden.Fragments.EditValve"
-        android:label="Edit valve"
+        android:label="@string/edit_valve"
         tools:layout="@layout/valve_edit" />
 
     <fragment
         android:id="@+id/editValveIcon"
         android:name="com.example.smartgarden.Fragments.EditValveIcon"
-        android:label="Choose icon"
+        android:label="@string/choose_icon"
         tools:layout="@layout/fragment_edit_valve_icon" />
 </navigation>

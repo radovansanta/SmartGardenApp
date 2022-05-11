@@ -9,19 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.smartgarden.ViewModels.GalleryViewModel;
-import com.example.smartgarden.databinding.FragmentGalleryBinding;
+import com.example.smartgarden.ViewModels.SchedulerLogsViewModel;
+import com.example.smartgarden.databinding.SwitchLogsBinding;
 
-public class GalleryFragment extends Fragment {
+public class SwitchLogsFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private SwitchLogsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        SchedulerLogsViewModel galleryViewModel =
+                new ViewModelProvider(this).get(SchedulerLogsViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = SwitchLogsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;

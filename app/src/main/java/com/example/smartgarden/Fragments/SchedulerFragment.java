@@ -24,7 +24,7 @@ import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Models.ValveAdapter;
 import com.example.smartgarden.R;
 import com.example.smartgarden.ViewModels.SlideshowViewModel;
-import com.example.smartgarden.databinding.FragmentSlideshowBinding;
+import com.example.smartgarden.databinding.FragmentSchedulerBinding;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
@@ -40,9 +40,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class SlideshowFragment extends Fragment {
-
-    private FragmentSlideshowBinding binding;
+public class SchedulerFragment extends Fragment {
+    //Scheduler
+    private FragmentSchedulerBinding binding;
     private Button addCommandsButton;
     private DatePicker datePicker;
     private TimePicker startTimePicker;
@@ -55,7 +55,7 @@ public class SlideshowFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel = new ViewModelProvider(this).get(SlideshowViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentSchedulerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         spinner = (Spinner) root.findViewById(R.id.planets_spinner);

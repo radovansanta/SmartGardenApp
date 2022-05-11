@@ -7,14 +7,18 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/water_check"
-            android:title="@string/menu_home" />
+            android:title="@string/menu_valves" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/home_clock"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_switch_logs"
+            android:icon="@drawable/baseline_list_24"
+            android:title="@string/menu_switch_logs" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/sun_wireless"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_scheduler"
+            android:icon="@drawable/baseline_update_24"
+            android:title="@string/menu_scheduler" />
+        <item
+            android:id="@+id/nav_scheduler_logs"
+            android:icon="@drawable/baseline_fact_check_24"
+            android:title="@string/menu_scheduler_logs" />
     </group>
 </menu>

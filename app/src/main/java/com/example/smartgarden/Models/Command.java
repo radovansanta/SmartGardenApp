@@ -5,19 +5,27 @@ import java.util.Calendar;
 
 public class Command {
     private Integer valve_id;
-    private Calendar date_time;
+    private String date_time;
     private boolean state;
+    private Integer  command_id;
 
     public Command(int valveId){
         this.valve_id = valveId;
     }
 
+    public void setCommand_id(Integer command_id) {
+        this.command_id = command_id;
+    }
+
+    public Integer getCommand_id() {
+        return command_id;
+    }
 
     public void setState(boolean state) {
         this.state = state;
     }
 
-    public void setDate_time(Calendar date_time) {
+    public void setDate_time(String date_time) {
         this.date_time = date_time;
     }
 
@@ -25,7 +33,7 @@ public class Command {
         this.valve_id = valveId;
     }
 
-    public Calendar getDate_time() {
+    public String getDate_time() {
         return date_time;
     }
 

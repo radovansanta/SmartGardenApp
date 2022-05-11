@@ -8,19 +8,15 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Valves</string>
-    <string name="menu_gallery">Switch Log</string>
-    <string name="menu_slideshow">Weather</string>
+    <string name="menu_valves">Valves</string>
+    <string name="menu_switch_logs">Switch Logs</string>
+    <string name="menu_scheduler_logs">Scheduler Logs</string>
+    <string name="menu_scheduler">Scheduler</string>
+    <string name="edit_valve">Edit valve</string>
+    <string name="choose_icon">Choose icon</string>
 
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+    <string-array name="valves_array">
+        <item>Valves</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

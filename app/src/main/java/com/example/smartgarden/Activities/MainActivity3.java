@@ -1,11 +1,9 @@
 package com.example.smartgarden.Activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
 import com.example.smartgarden.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -36,7 +34,7 @@ public class MainActivity3 extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_switch_logs, R.id.nav_scheduler)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

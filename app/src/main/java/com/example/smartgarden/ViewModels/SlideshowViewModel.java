@@ -1,8 +1,10 @@
 package com.example.smartgarden.ViewModels;
 
+import android.os.Build;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -57,6 +59,7 @@ public class SlideshowViewModel extends ViewModel {
         return repository.getSearchedValvesNames();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private String convertDateTime(DatePicker datePicker, TimePicker timePicker){
         return (datePicker.getYear()+ "-" +
                 datePicker.getMonth()+ "-" +
@@ -70,6 +73,7 @@ public class SlideshowViewModel extends ViewModel {
         repository.addCommand(command, startTime, endTime);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void addCommands(int valve_id, DatePicker datePicker, TimePicker startTimePicker, TimePicker endTimePicker){
         addCommand(valve_id,convertDateTime(datePicker,startTimePicker),convertDateTime(datePicker,endTimePicker));
     }

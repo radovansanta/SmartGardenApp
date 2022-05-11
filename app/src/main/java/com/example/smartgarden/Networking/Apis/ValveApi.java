@@ -1,6 +1,7 @@
 package com.example.smartgarden.Networking.Apis;
 
 import com.example.smartgarden.Models.Command;
+import com.example.smartgarden.Models.Log;
 import com.example.smartgarden.Models.ResponseM;
 import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Models.ValveAdapter;
@@ -26,7 +27,7 @@ public interface ValveApi {
     @GET("api/valves/names")
     Call<List<String>> getValveNames();
 
-    @GET("/valves/name/{name}")
+    @GET("api/valves/name/{name}")
     Call<Valve> getValveByName(@Path("name") String name);
 
     @PATCH("api/valves/{id}")
@@ -40,5 +41,8 @@ public interface ValveApi {
             @Body Command body,
             @Path("startTime") String startTime,
             @Path("endTime") String endTime);
+
+    @GET("api/logs")
+    Call<List<Log>> getSchedulerLogs();
 
 }
