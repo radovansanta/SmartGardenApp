@@ -72,12 +72,12 @@ public class IconAdapter extends RecyclerView.Adapter<IconAdapter.ViewHolder> {
             super(itemView);
             icon = itemView.findViewById(R.id.iconChange);
             itemView.setOnClickListener(v -> {
-                onClickListener.onClick(valves.get(getAdapterPosition()));
+                onClickListener.onClick(getAdapterPosition());
             });
         }
     }
 
     public interface OnClickListener {
-        void onClick(Drawable icon);
+        void onClick(Integer iconPosition);
     }
 }

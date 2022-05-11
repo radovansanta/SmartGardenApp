@@ -19,6 +19,26 @@ public class Valve {
         return id;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

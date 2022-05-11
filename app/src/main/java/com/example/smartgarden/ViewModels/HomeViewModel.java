@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Networking.Repositories.ValveRepository;
+import com.example.smartgarden.R;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

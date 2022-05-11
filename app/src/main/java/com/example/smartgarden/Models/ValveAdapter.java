@@ -58,6 +58,12 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
         holder.description.setText(valves.get(position).getDescription());
         //holder.icon.setImageResource(valves.get(position).getIconId());
         holder.aSwitch.setChecked(valves.get(position).getState());
+
+        if (valves.get(position).getIconId()==1)holder.icon.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.grass_icon));
+        if (valves.get(position).getIconId()==2)holder.icon.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.tree_icon));
+        if (valves.get(position).getIconId()==3)holder.icon.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.flower_icon));
+        if (valves.get(position).getIconId()==4)holder.icon.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.bush_icon));
+
     }
 
     @Override

@@ -2,7 +2,9 @@ package com.example.smartgarden.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.content.pm.LabeledIntent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,9 +22,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.smartgarden.Models.IconAdapter;
 import com.example.smartgarden.R;
 import com.example.smartgarden.ViewModels.HomeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
 
 public class EditValve extends Fragment {
 
@@ -51,6 +56,9 @@ public class EditValve extends Fragment {
         ImageView iconButton = view.findViewById(R.id.editIcon);
 
 
+
+
+
         mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
             nameText.setText(valve.getName());
             descriptionText.setText(valve.getDescription());
@@ -59,6 +67,12 @@ public class EditValve extends Fragment {
             if (valve.getState()){
                 stateText.setText("Valve is opened");
             } else stateText.setText("Valve is closed");
+
+            if (valve.getIconId()==1)iconButton.setImageDrawable(getResources().getDrawable(R.drawable.grass_icon));
+            if (valve.getIconId()==2)iconButton.setImageDrawable(getResources().getDrawable(R.drawable.tree_icon));
+            if (valve.getIconId()==3)iconButton.setImageDrawable(getResources().getDrawable(R.drawable.flower_icon));
+            if (valve.getIconId()==4)iconButton.setImageDrawable(getResources().getDrawable(R.drawable.bush_icon));
+
         });
 
         Button btnEditValve = view.findViewById(R.id.buttonEditValve);
@@ -83,6 +97,7 @@ public class EditValve extends Fragment {
             public void afterTextChanged(Editable editable) {
                 mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
                     if (!editable.toString().equals(valve.getName()))
+                        valve.setName(editable.toString());
                         btnEditValve.setVisibility(View.VISIBLE);
                 });
 
@@ -103,6 +118,7 @@ public class EditValve extends Fragment {
             public void afterTextChanged(Editable editable) {
                 mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
                     if (!editable.toString().equals(valve.getDescription()))
+                        valve.setDescription(editable.toString());
                         btnEditValve.setVisibility(View.VISIBLE);
                 });
 
@@ -111,4 +127,13 @@ public class EditValve extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("Resume");
+        mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
+            System.out.println(valve.getIconId());
+
+        });
+    }
 }

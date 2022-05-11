@@ -35,6 +35,7 @@ public class EditValveIcon extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
         binding = FragmentEditValveIconBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -47,7 +48,10 @@ public class EditValveIcon extends Fragment {
         iconsList.setLayoutManager(new GridLayoutManager(root.getContext(), numberOfColumns));
 
 
-        iconsAdapter.setOnClickListener(icon -> {
+        iconsAdapter.setOnClickListener(iconPosition -> {
+            homeViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
+                valve.setIcon(iconPosition+1);
+            });
             getActivity().onBackPressed();
         });
 
@@ -59,10 +63,10 @@ public class EditValveIcon extends Fragment {
         iconsList.setAdapter(iconsAdapter);
 
         ArrayList<Drawable> dat = new ArrayList<>();
-        dat.add((Drawable) getResources().getDrawable( R.drawable.grass_icon ));
-        dat.add((Drawable) getResources().getDrawable( R.drawable.tree_icon ));
-        dat.add((Drawable) getResources().getDrawable( R.drawable.flower_icon ));
-        dat.add((Drawable) getResources().getDrawable( R.drawable.bush_icon ));
+        dat.add(getResources().getDrawable( R.drawable.grass_icon ));
+        dat.add(getResources().getDrawable( R.drawable.tree_icon ));
+        dat.add(getResources().getDrawable( R.drawable.flower_icon ));
+        dat.add(getResources().getDrawable( R.drawable.bush_icon ));
 
         iconsAdapter.setData(dat);
     }
