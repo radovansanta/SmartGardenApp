@@ -13,27 +13,61 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200">
+        android:background="#F2F2F2">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                 <Button
                     android:id="@+id/buttonUpcoming"
-                    android:layout_margin="10dp"
-                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:background="@drawable/upcoming"/>
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="Upcoming" />
-                <Button
-                    android:id="@+id/buttonPrevious"
-                    android:layout_margin="10dp"
-                    android:padding="5dp"
+                    android:textAlignment="center"
+                    android:text="Upcoming"
+                    android:layout_marginBottom="10dp"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="?android:attr/textColorSecondary" />
+                </LinearLayout>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="Previous" />
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/buttonPrevious"
+                        android:layout_gravity="center"
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:background="@drawable/previous"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Previous"
+                        android:layout_marginBottom="10dp"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="?android:attr/textColorSecondary" />
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
     </FrameLayout>
 
@@ -48,7 +82,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

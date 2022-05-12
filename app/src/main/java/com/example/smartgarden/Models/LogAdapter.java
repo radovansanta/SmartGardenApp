@@ -110,7 +110,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
         DateFormat timeFormat = new SimpleDateFormat("HH:mm");
         DateFormat yearFormat = new SimpleDateFormat("yyyy");
-
+        //TODO: Deal with time zone +2:00
         result.put("name",dayNameFormat.format(date));
         result.put("date", date.getDate()+"."+(date.getMonth()+1) +"."+yearFormat.format(date));
         result.put("time",timeFormat.format(date));
