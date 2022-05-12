@@ -45,4 +45,10 @@ public interface ValveApi {
     @GET("api/logs")
     Call<List<Log>> getSchedulerLogs();
 
+    @GET("api/logs/upcoming")
+    Call<List<Log>> getSchedulerUpcomingLogs();
+
+    @GET("api/logs/previous")
+    Call<List<Log>> getSchedulerPreviousLogs();
+
 }

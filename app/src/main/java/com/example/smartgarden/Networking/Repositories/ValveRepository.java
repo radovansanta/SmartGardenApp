@@ -53,28 +53,6 @@ public class ValveRepository {
     public LiveData<ResponseM> getUpdateValveResponse() {
         return updateValveResponse;
     }
-    public LiveData<List<Log>> getSearchedSchedulerLogs() {
-        return searchedSchedulerLogs;
-    }
-
-    public void searchForSchedulerLogs() {
-        ValveApi valveApi = ServiceGenerator.getValveApi();
-        Call<List<Log>> call = valveApi.getSchedulerLogs();
-        call.enqueue(new Callback<List<Log>>() {
-            @EverythingIsNonNull
-            @Override
-            public void onResponse(Call<List<Log>> call, Response<List<Log>> response) {
-                if (response.isSuccessful()) {
-                    searchedSchedulerLogs.setValue(response.body());
-                }
-            }
-            @EverythingIsNonNull
-            @Override
-            public void onFailure(Call<List<Log>> call, Throwable t) {
-                System.out.println(t);
-            }
-        });
-    }
 
     public void searchForValveByName(String name) {
         ValveApi valveApi = ServiceGenerator.getValveApi();

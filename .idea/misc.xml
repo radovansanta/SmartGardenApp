@@ -32,7 +32,8 @@
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.16" />
         <entry key="app/src/main/res/layout/icon_rv_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/scheduler_log_cell.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/scheduler_log_cell.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/switch_logs.xml" value="0.1421875" />
         <entry key="app/src/main/res/layout/valve_edit.xml" value="0.25" />
         <entry key="app/src/main/res/layout/valve_item_list.xml" value="0.25" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />

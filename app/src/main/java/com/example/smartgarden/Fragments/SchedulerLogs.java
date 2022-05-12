@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,8 @@ public class SchedulerLogs extends Fragment {
 
     RecyclerView logsList;
     LogAdapter logAdapter;
+    Button upcomingButton;
+    Button previousButton;
     private FragmentSchedulerLogsBinding binding;
     private SchedulerLogsViewModel schedulerLogsViewModel;
 
@@ -42,15 +45,24 @@ public class SchedulerLogs extends Fragment {
         return root;
     }
 
-    public void loadData(){
+    public void loadUpcomingData(){
         logAdapter = new LogAdapter(getViewLifecycleOwner());
         logsList.setAdapter(logAdapter);
 
         System.out.println("Getting Logs");
+        schedulerLogsViewModel.searchForSchedulerLogsUpcoming();
+        schedulerLogsViewModel.getSchedulerLogsUpcoming().observe(getViewLifecycleOwner(), logs -> {
+            logAdapter.setData(logs);
+        });
+    }
 
-        schedulerLogsViewModel.searchForSchedulerLogs();
-        schedulerLogsViewModel.getSchedulerLogs().observe(getViewLifecycleOwner(), logs -> {
-            System.out.println("Getting Logs");
+    public void loadPreviousData(){
+        logAdapter = new LogAdapter(getViewLifecycleOwner());
+        logsList.setAdapter(logAdapter);
+
+        System.out.println("Getting Logs");
+        schedulerLogsViewModel.searchForSchedulerLogsPrevious();
+        schedulerLogsViewModel.getSchedulerLogsPrevious().observe(getViewLifecycleOwner(), logs -> {
             logAdapter.setData(logs);
         });
     }
@@ -62,10 +74,21 @@ public class SchedulerLogs extends Fragment {
         logsList.hasFixedSize();
         logsList.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        loadData();
+        upcomingButton = view.findViewById(R.id.buttonUpcoming);
+        previousButton = view.findViewById(R.id.buttonPrevious);
+
+        loadUpcomingData();
 
         logAdapter.setOnClickListener(valve -> {
             //Toast.makeText(view.getContext(), , Toast.LENGTH_SHORT).show();w
+        });
+
+        upcomingButton.setOnClickListener(click -> {
+            loadUpcomingData();
+        });
+
+        previousButton.setOnClickListener(click -> {
+            loadPreviousData();
         });
 
     }

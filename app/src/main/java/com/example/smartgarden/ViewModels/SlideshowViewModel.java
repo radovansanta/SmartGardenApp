@@ -61,8 +61,8 @@ public class SlideshowViewModel extends ViewModel {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private String convertDateTime(DatePicker datePicker, TimePicker timePicker){
-        return (datePicker.getYear()+ "-" +
-                datePicker.getMonth()+ "-" +
+        return (datePicker.getYear()-3+ "-" +
+                datePicker.getMonth()+1+ "-" +
                 datePicker.getDayOfMonth()+
                 timePicker.getHour()+":"+
                 timePicker.getMinute()+":00.000+00:00");
