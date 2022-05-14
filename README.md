@@ -17,11 +17,15 @@ The motivation behind the project is the own issue that transformed into the ide
 ![Prototype](https://user-images.githubusercontent.com/84182964/159178814-ae29c14e-dd9e-4fe0-8e35-dc7d93366814.png)
 
 ## Requirements
-- [ ] As a user, I would like to have a possibility to open the valve for specific hose using app to water the garden.
-- [ ] As a user, I would like to have a possibility to close the valve for specific hose using app to water the garden.
-- [ ] As a user, I would like to see which valves are open at realtime to have an overview of the system.
-- [ ] As a user, I would like to set a start time of a watering for a specific hose to create a schedule.
-- [ ] As a user, I would like to set an end time of a watering for a specific hose to create a schedule.
+- [X] As a user, I would like to have a possibility to open the valve for specific hose using app to water the garden.
+- [X] As a user, I would like to have a possibility to close the valve for specific hose using app to water the garden.
+- [X] As a user, I would like to see which valves are open or closed at realtime to have an overview of the system.
+- [X] As a user, I would like to set a start time of a watering for a specific hose to create a schedule.
+- [X] As a user, I would like to set an end time of a watering for a specific hose to create a schedule.
+- [X] As a user, I would like to see upcoming actions of the schedule to have an overview of all upcoming actions.
+- [X] As a user, I would like to see previous actions of the schedule to have an overview of all previous actions.
+- [X] As a user, I would like to change the name and description of the valve so I know which hose belongs to which plants.
+- [X] As a user, I would like to change the icon of the valve so I can personalize the profile.
 - [ ] As a user, I would like to receive a notification when watering started to be aware of an action.
 - [ ] As a user, I would like to receive a notification when watering ended to be aware of an action.
 
