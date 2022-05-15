@@ -20,5 +20,9 @@
             android:id="@+id/nav_scheduler_logs"
             android:icon="@drawable/baseline_fact_check_24"
             android:title="@string/menu_scheduler_logs" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/cog"
+            android:title="@string/menu_settings" />
     </group>
 </menu>
