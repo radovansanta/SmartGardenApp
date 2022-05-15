@@ -93,7 +93,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
                     if (aSwitch.isChecked()) {
                         repository.updateVale(valves.get(getAdapterPosition()).getId(),"on");
                         repository.getUpdateValveResponse().observe(lifecycle, valve -> {
-                            Toast.makeText(itemView.getContext(), valve.getMessage() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(itemView.getContext(), "Device is offline" , Toast.LENGTH_SHORT).show();
                             if (!valve.getMessage().equals("Valve should be changed to on")){
                                 aSwitch.setChecked(false);
                             }
@@ -101,7 +101,7 @@ public class ValveAdapter extends RecyclerView.Adapter<ValveAdapter.ViewHolder> 
                     } else {
                         repository.updateVale(valves.get(getAdapterPosition()).getId(),"off");
                         repository.getUpdateValveResponse().observe(lifecycle, valve -> {
-                            Toast.makeText(itemView.getContext(), valve.getMessage() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(itemView.getContext(), "Device is offline" , Toast.LENGTH_SHORT).show();
                             if (!valve.getMessage().equals("Valve should be changed to off")){
                                 aSwitch.setChecked(true);
                             }
