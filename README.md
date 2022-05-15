@@ -25,7 +25,9 @@ The motivation behind the project is the own issue that transformed into the ide
 - [X] As a user, I would like to see upcoming actions of the schedule to have an overview of all upcoming actions.
 - [X] As a user, I would like to see previous actions of the schedule to have an overview of all previous actions.
 - [X] As a user, I would like to change the name and description of the valve so I know which hose belongs to which plants.
-- [X] As a user, I would like to change the icon of the valve so I can personalize the profile.
+- [X] As a user, I would like to change the icon of the valve so I can personalize the valve.
+- [X] As a user, I would like to set and change my household information (name, adddress) so I can personalize the profile.
+- [X] As a user, I would like to set and change my household photo so I can personalize the profile.
 - [ ] As a user, I would like to receive a notification when watering started to be aware of an action.
 - [ ] As a user, I would like to receive a notification when watering ended to be aware of an action.
 
