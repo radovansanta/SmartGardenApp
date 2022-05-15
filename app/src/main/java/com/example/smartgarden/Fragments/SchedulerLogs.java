@@ -1,11 +1,14 @@
 package com.example.smartgarden.Fragments;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,25 +48,71 @@ public class SchedulerLogs extends Fragment {
         return root;
     }
 
-    public void loadUpcomingData(){
+    public void loadUpcomingData(View view){
         logAdapter = new LogAdapter(getViewLifecycleOwner());
         logsList.setAdapter(logAdapter);
 
-        System.out.println("Getting Logs");
         schedulerLogsViewModel.searchForSchedulerLogsUpcoming();
         schedulerLogsViewModel.getSchedulerLogsUpcoming().observe(getViewLifecycleOwner(), logs -> {
             logAdapter.setData(logs);
         });
+
+        logAdapter.setOnClickListener(log -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setCancelable(true);
+            builder.setTitle("Are you sure you want to delete:");
+            builder.setMessage("Upcoming schedule to turn " + log.getCommand().getState() + " the " + log.getValve().getName());
+            builder.setPositiveButton("Delete",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            schedulerLogsViewModel.deleteLog(log.getCommand().getCommand_id());
+                            Toast.makeText(view.getContext(), "Schedule deleted successfully", Toast.LENGTH_SHORT).show();
+                            loadUpcomingData(view);
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
     }
 
-    public void loadPreviousData(){
+    public void loadPreviousData(View view){
         logAdapter = new LogAdapter(getViewLifecycleOwner());
         logsList.setAdapter(logAdapter);
 
-        System.out.println("Getting Logs");
         schedulerLogsViewModel.searchForSchedulerLogsPrevious();
         schedulerLogsViewModel.getSchedulerLogsPrevious().observe(getViewLifecycleOwner(), logs -> {
             logAdapter.setData(logs);
+        });
+
+        logAdapter.setOnClickListener(log -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setCancelable(true);
+            builder.setTitle("Are you sure you want to delete:");
+            builder.setMessage("Previous command that turns " + log.getCommand().getState() + " the " + log.getValve().getName());
+            builder.setPositiveButton("Delete",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            schedulerLogsViewModel.deleteLog(log.getCommand().getCommand_id());
+                            Toast.makeText(view.getContext(), "Command deleted successfully", Toast.LENGTH_SHORT).show();
+                            loadPreviousData(view);
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
     }
 
@@ -77,18 +126,14 @@ public class SchedulerLogs extends Fragment {
         upcomingButton = view.findViewById(R.id.buttonUpcoming);
         previousButton = view.findViewById(R.id.buttonPrevious);
 
-        loadUpcomingData();
-
-        logAdapter.setOnClickListener(valve -> {
-            //Toast.makeText(view.getContext(), , Toast.LENGTH_SHORT).show();w
-        });
+        loadUpcomingData(view);
 
         upcomingButton.setOnClickListener(click -> {
-            loadUpcomingData();
+            loadUpcomingData(view);
         });
 
         previousButton.setOnClickListener(click -> {
-            loadPreviousData();
+            loadPreviousData(view);
         });
 
     }

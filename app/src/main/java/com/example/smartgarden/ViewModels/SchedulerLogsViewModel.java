@@ -30,6 +30,9 @@ public class SchedulerLogsViewModel extends ViewModel {
     public void searchForSchedulerLogsPrevious() {
         repository.searchForSchedulerLogsPrevious();
     }
+    public void deleteLog(int commandId) {
+        repository.deleteLog(commandId);
+    }
 
     public LiveData<List<Log>> getSchedulerLogs() {
         return repository.getSearchedSchedulerLogs();

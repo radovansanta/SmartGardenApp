@@ -141,13 +141,13 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
             valve_state_img = itemView.findViewById(R.id.currentState);
 
             itemView.setOnClickListener(v -> {
-                //onClickListener.onClick(logs.get(getAdapterPosition()));
+                onClickListener.onClick(logs.get(getAdapterPosition()));
             });
 
         }
     }
 
     public interface OnClickListener {
-        void onClick(Valve valve);
+        void onClick(Log valve);
     }
 }

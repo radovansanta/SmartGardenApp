@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -54,4 +55,6 @@ public interface ValveApi {
     @GET("api/switches/{id}")
     Call<Integer> getSwitches(@Path("id") Integer valveId);
 
+    @DELETE("api/command/delete/{id}")
+    Call<ResponseBody> deleteLog(@Path("id") Integer commandId);
 }
