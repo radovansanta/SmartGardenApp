@@ -24,15 +24,15 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="match_parent">
                 <LinearLayout
+                    android:id="@+id/buttonUpcoming"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <Button
-                    android:id="@+id/buttonUpcoming"
+                <ImageView
                     android:layout_gravity="center"
                     android:layout_height="40dp"
                     android:layout_width="40dp"
-                    android:background="@drawable/upcoming"/>
+                    android:background="@drawable/upcomingicon"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,15 +49,15 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="match_parent">
                 <LinearLayout
+                    android:id="@+id/buttonPrevious"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <Button
-                        android:id="@+id/buttonPrevious"
+                    <ImageView
                         android:layout_gravity="center"
                         android:layout_height="40dp"
                         android:layout_width="40dp"
-                        android:background="@drawable/previous"/>
+                        android:background="@drawable/previousicon"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

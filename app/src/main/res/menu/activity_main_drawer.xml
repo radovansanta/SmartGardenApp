@@ -9,10 +9,6 @@
             android:icon="@drawable/water_check"
             android:title="@string/menu_valves" />
         <item
-            android:id="@+id/nav_switch_logs"
-            android:icon="@drawable/baseline_list_24"
-            android:title="@string/menu_switch_logs" />
-        <item
             android:id="@+id/nav_scheduler"
             android:icon="@drawable/baseline_update_24"
             android:title="@string/menu_scheduler" />
