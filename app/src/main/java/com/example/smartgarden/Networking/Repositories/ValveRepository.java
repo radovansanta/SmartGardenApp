@@ -25,6 +25,7 @@ public class ValveRepository {
     private final MutableLiveData<List<String>> searchedValvesNames;
     private final MutableLiveData<ResponseM> updateValveResponse;
     private final MutableLiveData<List<Log>> searchedSchedulerLogs;
+    private final MutableLiveData<Integer> numberOfSwitches;
 
     private ValveRepository() {
         searchedValves = new MutableLiveData<>();
@@ -32,6 +33,7 @@ public class ValveRepository {
         searchedValve = new MutableLiveData<>();
         updateValveResponse = new MutableLiveData<>();
         searchedSchedulerLogs = new MutableLiveData<>();
+        numberOfSwitches = new MutableLiveData<>();
     }
 
     public static synchronized ValveRepository getInstance() {
@@ -52,6 +54,28 @@ public class ValveRepository {
     }
     public LiveData<ResponseM> getUpdateValveResponse() {
         return updateValveResponse;
+    }
+    public LiveData<Integer> getNumberOfSwitches() {
+        return numberOfSwitches;
+    }
+
+    public void searchNumberOfSwitches(Integer valveId) {
+        ValveApi valveApi = ServiceGenerator.getValveApi();
+        Call<Integer> call = valveApi.getSwitches(valveId);
+        call.enqueue(new Callback<Integer>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if (response.isSuccessful()) {
+                    numberOfSwitches.setValue(response.body());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                System.out.println("Retrofit Something went wrong :(");
+            }
+        });
     }
 
     public void searchForValveByName(String name) {

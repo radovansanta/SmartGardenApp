@@ -51,4 +51,7 @@ public interface ValveApi {
     @GET("api/logs/previous")
     Call<List<Log>> getSchedulerPreviousLogs();
 
+    @GET("api/switches/{id}")
+    Call<Integer> getSwitches(@Path("id") Integer valveId);
+
 }

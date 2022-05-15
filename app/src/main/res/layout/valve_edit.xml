@@ -191,8 +191,8 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/switches"
-                                android:text="30 times"
+                                android:id="@+id/nbOfSwitchesText"
+                                android:text="0 times"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorPrimary" />
                         </LinearLayout>

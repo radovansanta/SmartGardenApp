@@ -54,15 +54,19 @@ public class EditValve extends Fragment {
         TextView nameTopText = view.findViewById(R.id.valve_name_top);
         TextView stateText = view.findViewById(R.id.state);
         ImageView iconButton = view.findViewById(R.id.editIcon);
-
-
-
+        TextView switchesText = view.findViewById(R.id.nbOfSwitchesText);
 
 
         mViewModel.getSelected().observe(getViewLifecycleOwner(), valve -> {
             nameText.setText(valve.getName());
             descriptionText.setText(valve.getDescription());
             nameTopText.setText("EDIT "+valve.getName().toUpperCase());
+
+            mViewModel.searchForSwitches(valve.getId());
+
+            mViewModel.getNumberOfSwitches().observe(getViewLifecycleOwner(), switchNumber -> {
+                switchesText.setText(switchNumber.toString() + " times");
+            });
 
             if (valve.getState()){
                 stateText.setText("Valve is opened");

@@ -40,6 +40,14 @@ public class HomeViewModel extends ViewModel {
         repository.updateValve(valve.getId(),valve);
     }
 
+    public LiveData<Integer> getNumberOfSwitches() {
+        return repository.getNumberOfSwitches();
+    }
+
+    public void searchForSwitches(int valveId) {
+        repository.searchNumberOfSwitches(valveId);
+    }
+
     public LiveData<Valve> getSelected() {
         return selected;
     }
