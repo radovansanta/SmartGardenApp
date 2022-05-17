@@ -24,11 +24,11 @@ public class HomeViewModel extends ViewModel {
         repository = ValveRepository.getInstance();
     }
 
-    public void searchForPokemon() {
+    public void searchForValves() {
         repository.searchForValve();
     }
 
-    public LiveData<List<Valve>> getSearchedPokemon() {
+    public LiveData<List<Valve>> getSearchedValves() {
         return repository.getSearchedValves();
     }
 

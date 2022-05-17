@@ -14,11 +14,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartgarden.R;
-import com.example.smartgarden.Models.Valve;
 import com.example.smartgarden.Models.ValveAdapter;
 import com.example.smartgarden.ViewModels.HomeViewModel;
 import com.example.smartgarden.databinding.FragmentHomeBinding;
-import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -41,8 +39,8 @@ public class HomeFragment extends Fragment {
         valveAdapter = new ValveAdapter(getViewLifecycleOwner());
         valvesList.setAdapter(valveAdapter);
 
-        homeViewModel.searchForPokemon();
-        homeViewModel.getSearchedPokemon().observe(getViewLifecycleOwner(), valve -> {
+        homeViewModel.searchForValves();
+        homeViewModel.getSearchedValves().observe(getViewLifecycleOwner(), valve -> {
             valveAdapter.setData(valve);
         });
     }
