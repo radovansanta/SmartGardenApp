@@ -1,4 +1,8 @@
 # SmartGardenApp
+## Youtube Link
+https://www.youtube.com/watch?v=eMf4101SM8Q
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/eMf4101SM8Q/0.jpg)](https://www.youtube.com/watch?v=eMf4101SM8Q)
 
 ## Description
 Let’s imagine having a garden with a nice lawn or maybe flowers as well. It requires a lot of needed treatment, that you have to do by yourself. But there could be a way to make it easier using the mobile app called SmartGarden.
@@ -11,10 +15,10 @@ What’s more you can easily set a timer for watering or even set a schedule.
 
 The motivation behind the project is the own issue that transformed into the idea.
 
-![SmartGardenLogoSmall](https://user-images.githubusercontent.com/84182964/159178512-3435dcd9-c9c3-4424-889f-e044f511862a.png)
+![500K](https://user-images.githubusercontent.com/84182964/168907379-89c2d7c9-acb2-4a9c-b53b-7dfba4e99e45.png)
 
-## Already created hardware prototype
-![Prototype](https://user-images.githubusercontent.com/84182964/159178814-ae29c14e-dd9e-4fe0-8e35-dc7d93366814.png)
+## Created hardware device
+![500P](https://user-images.githubusercontent.com/84182964/168907526-c7a2a4b4-de31-4fce-b325-e8875a1c9555.png)
 
 ## Requirements
 - [X] As a user, I would like to have a possibility to open the valve for specific hose using app to water the garden.
